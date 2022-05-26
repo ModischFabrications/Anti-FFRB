@@ -6,6 +6,7 @@
 
 name: Build and Deploy
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -30,5 +31,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages # use hidden branch to keep main clean
-          folder: build # build target of svelte
+          folder: public # build target of svelte
           
