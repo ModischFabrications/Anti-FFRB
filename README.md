@@ -10,13 +10,35 @@ This script should make it easier to combat these bad habits by supervising you 
 Synopsis: This script will warn you if your hand is in proximity to your face. 
 
 Basic algorithm:
+```
 1. Check for face -> warn if missing
 2. Save face position f_pos
 3. Find and save hand position h_pos
 4. Alert if f_pos ~= h_pos
+```
+
+## Installation
+This is for development, use the website if you are a user!
+
+Open a terminal and type:
+```
+npm install
+npm run dev
+```
+
+Edit `./src/*` and look at http://localhost:8080/, everything should be updated automatically. 
 
 ## Deployment
-TODO Cloudflare CDN, Github Actions & more 
+Prebuilds are kept out of this repo by design, can't assume they are always in sync.
+
+Open a terminal and type:
+```
+npm run build
+```
+Copy `./public/` to your webhost of choice or use a premade upload script. 
+
+**TODO** Cloudflare CDN, Github Actions & more 
+
 
 ## Dependencies
 - [Svelte](https://svelte.dev/)
@@ -33,6 +55,10 @@ TODO Cloudflare CDN, Github Actions & more
 8. https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site/
 9. https://github.com/fireship-io/10-javascript-frameworks/tree/main/svelte-app
 10. https://medium.com/codingthesmartway-com-blog/building-a-svelte-3-todo-app-from-start-to-deployment-1737f72c23a6
+11. https://svelte.dev/tutorial/basics
+12. https://github.com/sveltejs/template
+13. https://svelte.dev/blog/svelte-for-new-developers
+
 
 ## Design Decisions
 ### Language
@@ -84,8 +110,12 @@ Cloudflare CDN makes high performance usage of a static app much easier than del
 [Do this if you want to prevent a hug of death](https://noted.lol/noted-survived-top-3-on-hacker-news-how-did-it-effect-my-homelab/). 
 Using its DNS might make integration easier, but I haven't gotten around to that yet. 
 
-[Netlify](https://www.netlify.com/with/svelte/) supports Svelte natively and has a free tier, but seems to be limited.
-[Vercel](https://vercel.com/guides/deploying-svelte-with-vercel) offers more for free hobby use though.
+Web host
+- Selfhosting is great if you know what you do, but that's not my case. 
+- [Netlify](https://www.netlify.com/with/svelte/) supports Svelte natively and has a free tier, but seems to be limited
+- [Vercel](https://vercel.com/guides/deploying-svelte-with-vercel) offers more for free hobby use and integrates easily
+- [Surge](https://surge.sh/) also has a great integration and free offer 
+
 
 ### Alerts
 1. Screen flickering makes sense if you are sitting in front of it. Difficult to integrate though.
