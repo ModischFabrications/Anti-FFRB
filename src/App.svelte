@@ -1,9 +1,11 @@
 <script>
 	export let name;
+	export let app_version;
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
+	<h3>Version {app_version} is currently deployed.</h3>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 </main>
 
