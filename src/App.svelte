@@ -1,12 +1,14 @@
 <script>
-	export let name;
+	export let app_name;
 	export let app_version;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<h3>Version {app_version} is currently deployed.</h3>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Welcome to {app_name}</h1>
+	<h2>This will eventually be a utility to combat <a href="https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior">Face-focused repetitive behaviors (FFRBs)</a> </h2>
+	<h3>WORK IN PROGRESS!</h3>
+	<p>Look at the source code <a href="https://github.com/ModischFabrications/Anti-FFRB">[here]</a> </p>
+	<p>Version {app_version} is currently deployed.</p>
 </main>
 
 <style>
