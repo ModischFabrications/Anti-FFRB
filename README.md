@@ -1,11 +1,11 @@
+## **WORK IN PROGRESS**
+
+
 # Anti-FFRB
+
 Stop face focused repetitive behaviors (FFRB) by keeping your fingers away. 
 
-Use my self-hosted version at [TODO](https://ffrb.modisch.me/).
-
-[Body-focused repetitive behaviors (BFRBs)](https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior) are better known under their common symptoms like nail biting, hair pulling, nose picking and more. 
-
-This script should make it easier to combat these bad habits by supervising you through your webcam and alerting you whenever they happen. 
+Use [my hosted version](https://ffrb.modisch.me/) or host your own.
 
 Synopsis: This script will warn you if your hand is in proximity to your face. 
 
@@ -17,6 +17,11 @@ Basic algorithm:
 4. Alert if f_pos ~= h_pos
 ```
 
+## Motivation
+[Body-focused repetitive behaviors (BFRBs)](https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior) are better known under their common symptoms like nail biting, hair pulling, nose picking and more. 
+
+This script should make it easier to combat these bad habits by supervising you through your webcam and alerting you whenever they happen. 
+
 ## Installation
 This is for development, use the website if you are a user!
 
@@ -25,19 +30,36 @@ Open a terminal and type:
 npm install
 npm run dev
 ```
+Look at http://localhost:8080/ to see your build. 
 
-Edit `./src/*` and look at http://localhost:8080/, everything should be updated automatically. 
+Live updates are possible: Edit `./src/*` and save your changes, everything should be updated automatically. 
 
 ## Deployment
 Prebuilds are kept out of this repo by design, can't assume they are always in sync.
 
+### Github Actions
+*Just do nothing.*  
+The attached Github Action script creates and updates a branch with all files needed for the deployment. 
+It's really that simple, can't believe it either. 
+
+You do need to link your domain once for each new project:
+1. Open your domain provider and add a CNAME record from your desired subdomain pointing to YOURNAME.github.io
+2. Go to Github, open Settings/Pages 
+    1. select the branch "gh-pages" to prepare deployment. 
+    2. Add your custom domain with the subdomain prefix
+4. Wait a while for DNS propagation (>10min)
+5. Definitely wait for it because you will definitely get sceptical that something was wrong
+6. Navigate to your domain with a fresh device to prevent cache errors
+7. Enable HTTPS once everything is working
+
+Yes, you can have multiple CNAMEs pointing to the same URL for YOURNAME.github.io. It's weird but it works, gh-pages manages everything. 
+
+### Manual
 Open a terminal and type:
 ```
 npm run build
 ```
-Copy `./public/` to your webhost of choice or use a premade upload script. 
-
-**TODO** Cloudflare CDN, Github Actions & more 
+Copy `./public/` to your webhost of choice. 
 
 
 ## Dependencies
@@ -58,6 +80,7 @@ Copy `./public/` to your webhost of choice or use a premade upload script.
 11. https://svelte.dev/tutorial/basics
 12. https://github.com/sveltejs/template
 13. https://svelte.dev/blog/svelte-for-new-developers
+14. https://deanattali.com/blog/multiple-github-pages-domains/
 
 
 ## Design Decisions
@@ -103,7 +126,7 @@ Generic tracking libs:
 - [Handtrack.js](https://victordibia.com/handtrack.js): Easy and simple, exact use case
 - [Handsfree.js](https://handsfree.js.org/): Alternative with additional poses
 
-Handtrack has a great demo and seems easy to use, so let's test that one for now.
+Handtrack.js has a great demo and seems easy to use, so let's test that one for now.
 
 ### Deployment
 Selfhosting is great if you know what you do, but that's not my case. 
@@ -126,10 +149,9 @@ Using Github Actions makes sense, I don't want to keep updating everything manua
 Q: Why build this?  
 A: Ignoring bad habits is a bad habit of mine, let's see if a self-made solution helps.
 
-Q: Privacy?
+Q: Privacy?  
 A: Nothing leaves your computer, everything is offline. Why would I pay server costs to capture hours of face-videos?
-
 
 ## Contributing
 Feel free to contact me or make a pull-request if you want to participate.
-Feedback is also welcome!
+Feedback is very welcome!
