@@ -106,16 +106,16 @@ Generic tracking libs:
 Handtrack has a great demo and seems easy to use, so let's test that one for now.
 
 ### Deployment
-Cloudflare CDN makes high performance usage of a static app much easier than delivering everything yourself. 
+Selfhosting is great if you know what you do, but that's not my case. 
+Luckily there are a few free options for developers. 
+
+There are [better](https://free-for.dev/#/?id=web-hosting) comparison [lists](https://github.com/255kb/stack-on-a-budget/blob/master/pages/static-app-hosting.md) than mine.
+
+CDN makes high performance usage of a static app much easier than delivering everything yourself. 
 [Do this if you want to prevent a hug of death](https://noted.lol/noted-survived-top-3-on-hacker-news-how-did-it-effect-my-homelab/). 
-Using its DNS might make integration easier, but I haven't gotten around to that yet. 
 
-Web host
-- Selfhosting is great if you know what you do, but that's not my case. 
-- [Netlify](https://www.netlify.com/with/svelte/) supports Svelte natively and has a free tier, but seems to be limited
-- [Vercel](https://vercel.com/guides/deploying-svelte-with-vercel) offers more for free hobby use and integrates easily
-- [Surge](https://surge.sh/) also has a great integration and free offer 
-
+Svelte integration seems to be surprisingly simple because you only need to copy the build directory over. 
+Using Github Actions makes sense, I don't want to keep updating everything manually. 
 
 ### Alerts
 1. Screen flickering makes sense if you are sitting in front of it. Difficult to integrate though.
