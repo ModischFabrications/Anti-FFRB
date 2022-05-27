@@ -64,6 +64,7 @@ Copy `./public/` to your webhost of choice.
 
 ## Dependencies
 - [Svelte](https://svelte.dev/)
+- [Svelte Material UI](https://sveltematerialui.com/)
 - [Handtrack.js](https://victordibia.com/handtrack.js)
 
 ## References
@@ -114,6 +115,28 @@ Solid uses Vite, a great build tool, and is even newer, but [lacks the community
 While I don't need Reacts community I depend on examples, which makes the tiny differences between them less important.
 
 [SvelteKit](https://kit.svelte.dev/) seems like a worthy addition for larger apps, but let's keep it simple for now. 
+
+### UI Library
+As I know now there are no generic UI components in Svelte (or any similar framework), so you need to choose something. Integration with the framework is nice, but optional. It should offer many components to prevent me from building ugly ones though. 
+
+Generic CSS frameworks (No JS, looks only):
+- Tailwind is the new, cool kid on the block, but barebones styling; lower than Bootstrap and very verbose
+- [Bulma](https://bulma.io/) strong choice for ready-made components, biggest
+- [DaisyUI](https://daisyui.com/) (45) abstract generic components based on Tailwind. Pretty!
+- [Framework7](https://framework7.io/) also looks good, but Daisy looks better
+
+Full Svelte integration (based on [other](https://medium.com/mkdir-awesome/8-popular-svelte-ui-components-d2a3e43d70c3) [lists](https://themeselection.com/svelte-ui-library)):
+- [Carbon Components](https://carbon-components-svelte.onrender.com/) is a huge system with icons and more, styled by IBM. It makes me sad that it looks so bad :(
+- [Svelte Material UI](https://sveltematerialui.com/) seems like the biggest (Material UI adaption) for Svelte with great integration
+- [SvelteUI](https://www.svelteui.org/) promises perfect integration and quick turnaround, but is still in Beta and has few components(25c)
+- [Sveltestrap](https://sveltestrap.js.org/) is Bootstrap in Svelte. 
+- [Smelte](https://smeltejs.com/) uses Tailwind and Material look, but is still small
+- [AgnosticUI](https://www.agnosticui.com/) promises bindings for all major platforms, still tiny though
+- [Attractions](https://illright.github.io/attractions/) offers a bunch of components, but I don't like the look and it's tiny
+- [Materialify](https://svelte-materialify.vercel.app/) is already deprecated
+Others are too tiny or unstable to recommend. 
+
+My final candidates were Svelte Material UI, Bulma and DaisyUI. Latter ones are more beautiful, the great integration of the former seems better for someone without any background though.
 
 ### Generic detection vs trained AI
 [Tensorflow](https://www.tensorflow.org/js) could build a neuronal net to detect more complex patterns, but that would only work for my face. 
