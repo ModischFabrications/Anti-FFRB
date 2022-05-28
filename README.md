@@ -82,6 +82,7 @@ Copy `./public/` to your webhost of choice.
 12. https://github.com/sveltejs/template
 13. https://svelte.dev/blog/svelte-for-new-developers
 14. https://deanattali.com/blog/multiple-github-pages-domains/
+15. https://dev.to/danawoodman/svelte-quick-tip-connect-a-store-to-local-storage-4idi
 
 
 ## Design Decisions

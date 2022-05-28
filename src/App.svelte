@@ -1,6 +1,12 @@
-<script>
-	export let app_name;
-	export let app_version;
+<script lang="ts">
+	export let app_name: string;
+	export let app_version: string;
+	import LayoutGrid, { Cell } from '@smui/layout-grid';
+
+	import {darkMode} from './store';
+	import Settings from "./components/Settings.svelte";
+
+
 </script>
 
 <main>
@@ -9,12 +15,35 @@
 	<h3>WORK IN PROGRESS!</h3>
 	<p>Look at the source code <a href="https://github.com/ModischFabrications/Anti-FFRB">[here]</a> </p>
 	<p>Version {app_version} is currently deployed.</p>
+	<p>Darkmode: [{$darkMode}]</p>
+
+	<button on:click={() => darkMode.set(false)}>
+		light
+	</button>
+	<button on:click={() => darkMode.set(true)}>
+		dark
+	</button>
+
+	<LayoutGrid>
+		<Cell span={8}>
+			<p>This will be a video soon...</p>
+	<!-- TODO {#await tracking}
+		
+	{:then } 
+		
+	{/await}-->
+		  </Cell>
+		  <Cell span={4}>
+			<Settings />
+		  </Cell>
+	</LayoutGrid>
+
+	
 </main>
 
 <style>
 	main {
-		text-align: center;
-		padding: 1em;
+		padding: 2em;
 		max-width: 240px;
 		margin: 0 auto;
 	}
