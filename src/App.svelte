@@ -8,6 +8,10 @@
 	import NavBar from "./components/NavBar.svelte";
 </script>
 
+<svelte:head>
+	<title>{app_name}</title>
+</svelte:head>
+
 <main>
 	<NavBar {app_name} {app_version} />
 

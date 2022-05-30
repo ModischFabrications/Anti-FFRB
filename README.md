@@ -140,6 +140,7 @@ Full Svelte integration (based on [other](https://medium.com/mkdir-awesome/8-pop
 Others are too tiny or unstable to recommend. 
 
 My final candidates were Svelte Material UI, Bulma and DaisyUI. Latter ones are more beautiful, the great integration of the former seems better for someone without any background though.
+SMUI also contains simple Icons, provided by Material UI. Future work could use [Feather](https://feathericons.com/) and it's Svelte binding or even [Svelte Icons](https://svelte-icons.vercel.app/) as an all-in-one importer for everything. 
 
 ### Generic detection vs trained AI
 [Tensorflow](https://www.tensorflow.org/js) could build a neuronal net to detect more complex patterns, but that would only work for my face. 
