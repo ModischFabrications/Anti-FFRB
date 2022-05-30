@@ -67,6 +67,8 @@ Copy `./public/` to your webhost of choice.
 - [Svelte Material UI](https://sveltematerialui.com/)
 - [Handtrack.js](https://victordibia.com/handtrack.js)
 
+I'm also using https://counter.dev/ to track page visits without compromising any privacy with Google Analytics. 
+
 ## References
 1. https://towardsdatascience.com/from-training-to-deployment-stop-biting-your-nails-with-machine-learning-ffed31a59040
 2. https://realpython.com/face-detection-in-python-using-a-webcam/
@@ -83,7 +85,7 @@ Copy `./public/` to your webhost of choice.
 13. https://svelte.dev/blog/svelte-for-new-developers
 14. https://deanattali.com/blog/multiple-github-pages-domains/
 15. https://dev.to/danawoodman/svelte-quick-tip-connect-a-store-to-local-storage-4idi
-
+16. https://fonts.google.com/icons
 
 ## Design Decisions
 ### Language
