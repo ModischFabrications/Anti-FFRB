@@ -10,6 +10,16 @@
 
 <svelte:head>
 	<title>{app_name}</title>
+	<meta name="author" content="Modisch Fabrications" />
+	<meta
+		name="description"
+		content="Online tool to combat face focused repetitive behaviours like nail biting, hair pulling, nose picking and more"
+	/>
+	<meta
+		name="keywords"
+		content="ffrb, face, focused, repetitive, behaviours, behavior, modisch, fabrications, nail, biting, hair, pulling, nose, picking, utility, online, tool"
+	/>
+	<meta property="og:title" content="{app_name}: Stop nail biting now!" />
 </svelte:head>
 
 <main>

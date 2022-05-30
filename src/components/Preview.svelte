@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<div class="preview-container">
+<div class="preview-container" alt="video stream preview">
     <p>This will be a video soon...</p>
     <!-- TODO {#await tracking}
         
