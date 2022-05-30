@@ -69,8 +69,8 @@
         <p>The AI is still waking up, this might take a while..</p>
     {:then res}
         <!-- svelte-ignore a11y-media-has-caption -->
-        <video id="video" style="display: none;" bind:this={video} />
-        <canvas id="canvas" bind:this={canvas} />
+        <video style="display: none;" bind:this={video} />
+        <canvas bind:this={canvas} />
     {:catch error}
         <p style="color: red">{error.message}</p>
     {/await}
