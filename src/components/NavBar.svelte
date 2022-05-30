@@ -20,13 +20,13 @@
                     <IconButton class="material-icons" href="https://github.com/ModischFabrications/Anti-FFRB" target="_blank">info</IconButton>
                     <Tooltip>View on GitHub</Tooltip>
                 </Wrapper>
-                <Wrapper>
+                <!-- <Wrapper>
                     <IconButton toggle bind:pressed={$darkMode}>
                         <Icon class="material-icons" on>light_mode</Icon>
                         <Icon class="material-icons">dark_mode</Icon>
                     </IconButton>
                     <Tooltip>Toggle Darkmode</Tooltip>
-                </Wrapper>
+                </Wrapper> -->
             </Section>
         </Row>
     </TopAppBar>
