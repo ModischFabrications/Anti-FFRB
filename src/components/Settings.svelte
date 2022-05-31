@@ -11,9 +11,9 @@
     // }
     // let alerts: AlertSettings;
 
-    let sound: boolean = true;
-    let popup: boolean;
-    let flashing: boolean = true;
+    let sound = true;
+    let popup = false;
+    let flashing = true;
 </script>
 
 <div>
