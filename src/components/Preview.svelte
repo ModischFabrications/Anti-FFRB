@@ -21,7 +21,7 @@
         // TODO connect to toggle/dropdown
         setTimeout(() => {
             startVideo();
-        }, 2000);
+        }, 100);
     });
 
     function runDetection() {
@@ -70,13 +70,14 @@
     {:then res}
         <!-- svelte-ignore a11y-media-has-caption -->
         <video style="display: none;" bind:this={video} />
-        <canvas bind:this={canvas} />
+        <canvas class="video-container" bind:this={canvas} />
     {:catch error}
         <p style="color: red">{error.message}</p>
     {/await}
 </div>
 
 <style>
+    /* handtracking uses a ratio of 4/3, so we normalize to that */
     .preview-container {
         background: #f1f1f1;
         width: 100%;
@@ -84,6 +85,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        aspect-ratio: 16/9;
+        aspect-ratio: 4/3;
+
+        border-radius: 0.5em;
+        outline: 0.2em solid #e0e0e0;
+    }
+
+    .video-container {
+        width: 100%;
+
     }
 </style>

@@ -48,5 +48,7 @@
 <style>
 	.content {
 		padding: 2em;
+		margin: auto;
+		max-width: 160ch;
 	}
 </style>
