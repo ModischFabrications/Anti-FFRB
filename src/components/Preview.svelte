@@ -1,11 +1,15 @@
 <script lang="ts">
+    import { fade } from "svelte/transition";
     import * as handTrack from "handtrackjs";
 
+    // TODO tune to perfection; maybe extract into settings
     const modelParams = {
         flipHorizontal: true, // flip e.g for video
         maxNumBoxes: 10, // maximum number of boxes to detect
-        iouThreshold: 0.5, // ioU threshold for non-max suppression
+        iouThreshold: 0.3, // ioU threshold for non-max suppression ???
         scoreThreshold: 0.3, // confidence threshold for predictions.
+        modelType: "ssd640fpnlite", // better detection of face/hand overlaps
+        modelSize: "small",
     };
 
     let canvas: HTMLCanvasElement;
@@ -13,6 +17,9 @@
     let isVideo: boolean;
 
     let model = null;
+
+    let no_face = false;
+    let no_cam = false;
 
     let modelPromise = handTrack.load(modelParams).then((lmodel) => {
         model = lmodel;
@@ -23,6 +30,24 @@
             startVideo();
         }, 100);
     });
+
+    // TODO emit as event for external analysis
+    function handlePredictions(
+        ps: {
+            bbox: number[];
+            class: number;
+            label: string;
+            score: string;
+        }[]
+    ) {
+        let faces = ps.filter((p) => p.label == "face");
+        no_face = faces.length == 0;
+
+        let hands = ps.filter((x) => !faces.includes(x));
+        if (hands.length < 1) return;
+
+        // TODO boundry box check
+    }
 
     function runDetection() {
         model.detect(video).then((predictions) => {
@@ -35,6 +60,8 @@
                 video
             );
 
+            handlePredictions(predictions);
+
             // queue for next frame
             requestAnimationFrame(runDetection);
         });
@@ -42,7 +69,6 @@
 
     function startVideo() {
         console.log("Starting video stream...");
-        // video.width and .height are possible, but not needed atm
 
         // TODO add promise to second #await
         handTrack.startVideo(video).then(function (res) {
@@ -52,7 +78,7 @@
                 isVideo = true;
                 runDetection();
             } else {
-                console.error("Please enable video");
+                no_cam = true;
             }
             video.style.height = "";
         });
@@ -64,16 +90,26 @@
     }
 </script>
 
-<div class="preview-container" alt="video stream preview">
-    {#await modelPromise}
-        <p>The AI is still waking up, this might take a while..</p>
-    {:then res}
-        <!-- svelte-ignore a11y-media-has-caption -->
-        <video style="display: none;" bind:this={video} />
-        <canvas class="video-container" bind:this={canvas} />
-    {:catch error}
-        <p style="color: red">{error.message}</p>
-    {/await}
+<div>
+    <div class="preview-container" alt="video stream preview">
+        {#await modelPromise}
+            <p>The AI is still waking up, this might take a while..</p>
+        {:then res}
+            <!-- svelte-ignore a11y-media-has-caption -->
+            <video style="display: none;" bind:this={video} />
+            <canvas class="video-container" bind:this={canvas} />
+        {:catch error}
+            <p style="color: red">{error.message}</p>
+        {/await}
+    </div>
+    {#if no_face}
+        <p style="color: red" transition:fade>No face found.</p>
+    {/if}
+    {#if no_cam}
+        <p style="color: red" transition:fade>
+            No stream. Please allow video access.
+        </p>
+    {/if}
 </div>
 
 <style>
@@ -93,6 +129,5 @@
 
     .video-container {
         width: 100%;
-
     }
 </style>
