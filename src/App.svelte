@@ -46,12 +46,6 @@
 </main>
 
 <style>
-	:root {
-		--mdc-theme-primary: hsl(194, 100%, 50%);
-		--mdc-theme-secondary: hsl(232, 40%, 39%);
-		--mdc-switch-selected-track-color: hsl(193, 100%, 91%);
-	}
-
 	.content {
 		padding: 2em;
 		margin: auto;
