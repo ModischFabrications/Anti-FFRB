@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npm run prepare && rollup -c",
+    "build": "rollup -c && npm run theme",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "prepare": "npm run smui-theme-light && npm run smui-theme-dark",
+    "theme": "npm run smui-theme-light && npm run smui-theme-dark",
     "smui-theme-light": "smui-theme compile public/build/smui.css -i src/theme",
     "smui-theme-dark": "smui-theme compile public/build/smui-dark.css -i src/theme/dark"
   },

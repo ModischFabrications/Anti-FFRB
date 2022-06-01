@@ -28,13 +28,13 @@ This is for development, use the website if you are a user!
 Open a terminal and type:
 ```
 npm install
-npm run prepare
+npm run theme
 npm run dev
 ```
 Look at http://localhost:8080/ to see your build. 
 
 Live updates are possible: Edit `./src/*` and save your changes, everything should be updated automatically. 
-Theme changes need to be build manually with `npm run prepare`.
+Theme changes need to be build manually with `npm run theme`.
 
 ## Deployment
 Prebuilds are kept out of this repo by design, can't assume they are always in sync.
