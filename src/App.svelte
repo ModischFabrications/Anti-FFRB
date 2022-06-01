@@ -10,11 +10,16 @@
 	let alertSettings: { popup: boolean; sound: boolean; flashing: boolean };
 
 	// only mp3/wav are universally supported
-	let alertSound = new Audio('https://upload.wikimedia.org/wikipedia/commons/transcoded/3/34/Buzzer.ogg/Buzzer.ogg.mp3');
+	let alertSound = new Audio(
+		"https://upload.wikimedia.org/wikipedia/commons/transcoded/3/34/Buzzer.ogg/Buzzer.ogg.mp3"
+	);
 
 	function sendAlert() {
 		if (alertSettings.popup) alert("Stop that!");
-		if (alertSettings.sound && alertSound.paused) alertSound.play();	// this needs a user interaction!
+		if (alertSettings.sound && alertSound.paused) alertSound.play(); // this needs a user interaction!
+		if (alertSettings.flashing) {
+			/* TODO*/
+		}
 	}
 </script>
 
@@ -63,10 +68,10 @@
 	}
 
 	:global(.error-text) {
-        color: hsl(0, 40%, 50%);
-    }
+		color: hsl(0, 40%, 50%);
+	}
 
 	:global(.warn-text) {
-        color: hsl(46, 100%, 40%)
-    }
+		color: hsl(46, 100%, 40%);
+	}
 </style>

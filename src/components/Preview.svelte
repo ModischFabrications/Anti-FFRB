@@ -24,6 +24,7 @@
     let no_face = false;
     let no_cam = false;
 
+    // TODO delay a bit to load page cleanly, maybe just offer a button
     let modelPromise = handTrack.load(modelParams).then((lmodel) => {
         model = lmodel;
         console.log("model loaded");

@@ -8,6 +8,7 @@
         popup: false,
         flashing: true,
     };
+    // TODO persist to local store
 </script>
 
 <div>
