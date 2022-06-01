@@ -9,8 +9,12 @@
 
 	let alertSettings: { popup: boolean; sound: boolean; flashing: boolean };
 
+	// only mp3/wav are universally supported
+	let alertSound = new Audio('https://upload.wikimedia.org/wikipedia/commons/transcoded/3/34/Buzzer.ogg/Buzzer.ogg.mp3');
+
 	function sendAlert() {
 		if (alertSettings.popup) alert("Stop that!");
+		if (alertSettings.sound && alertSound.paused) alertSound.play();	// this needs a user interaction!
 	}
 </script>
 
