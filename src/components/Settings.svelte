@@ -3,7 +3,7 @@
     import FormField from "@smui/form-field";
     import { slide } from "svelte/transition";
 
-    let alerts = {
+    export let alerts = {
         sound: true,
         popup: false,
         flashing: true,

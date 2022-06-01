@@ -51,7 +51,7 @@
 
         // TODO boundry box check, wait for x seconds continuous
 
-        //dispatch("prediction", [faces, hands]);
+        dispatch("detection", [faces, hands]);
     }
 
     function runDetection() {

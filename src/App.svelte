@@ -7,8 +7,10 @@
 	import Preview from "./components/Preview.svelte";
 	import NavBar from "./components/NavBar.svelte";
 
+	let alertSettings: { popup: boolean; sound: boolean; flashing: boolean };
+
 	function sendAlert() {
-		alert("Stop that!");
+		if (alertSettings.popup) alert("Stop that!");
 	}
 </script>
 
@@ -40,10 +42,10 @@
 
 		<LayoutGrid>
 			<Cell span={8}>
-				<Preview on:prediction={sendAlert} />
+				<Preview on:detection={sendAlert} />
 			</Cell>
 			<Cell span={4}>
-				<Settings />
+				<Settings bind:alerts={alertSettings} />
 			</Cell>
 		</LayoutGrid>
 	</div>
