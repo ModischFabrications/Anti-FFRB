@@ -49,9 +49,9 @@
         let hands = ps.filter((x) => !faces.includes(x));
         if (hands.length < 1) return;
 
-        // TODO boundry box check
+        // TODO boundry box check, wait for x seconds continuous
 
-        dispatch("prediction", [faces, hands]);
+        //dispatch("prediction", [faces, hands]);
     }
 
     function runDetection() {
