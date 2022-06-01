@@ -6,8 +6,8 @@
     const modelParams = {
         flipHorizontal: true, // flip e.g for video
         maxNumBoxes: 10, // maximum number of boxes to detect
-        iouThreshold: 0.3, // ioU threshold for non-max suppression ???
-        scoreThreshold: 0.3, // confidence threshold for predictions.
+        iouThreshold: 0.5, // ioU threshold for non-max suppression ???
+        scoreThreshold: 0.4, // confidence threshold for predictions.
         modelType: "ssd640fpnlite", // better detection of face/hand overlaps
         modelSize: "small",
     };
@@ -103,10 +103,10 @@
         {/await}
     </div>
     {#if no_face}
-        <p style="color: red" transition:fade>No face found.</p>
+        <p class="error-text" transition:fade>No face found.</p>
     {/if}
     {#if no_cam}
-        <p style="color: red" transition:fade>
+        <p class="error-text" transition:fade>
             No stream. Please allow video access.
         </p>
     {/if}
@@ -115,7 +115,7 @@
 <style>
     /* handtracking uses a ratio of 4/3, so we normalize to that */
     .preview-container {
-        background: #f1f1f1;
+        background: hsla(0, 0%, 70%, 0.3);
         width: 100%;
         height: 100%;
         display: flex;
@@ -124,10 +124,15 @@
         aspect-ratio: 4/3;
 
         border-radius: 0.5em;
-        outline: 0.2em solid #e0e0e0;
+        outline: 0.3em solid hsl(0, 0%, 70%, 0.5);
     }
 
     .video-container {
         width: 100%;
+        border-radius: inherit;
+    }
+
+    .error-text {
+        color: hsl(0, 40%, 50%);
     }
 </style>

@@ -18,8 +18,8 @@ body {
 }
 
 a {
-  color: #92d3ff;
+  color: hsl(204, 100%, 80%);
 }
 a:visited {
-  color: color.scale(#6bc4ff, $lightness: -35%);
+  color: color.scale(hsl(204, 100%, 85%), $lightness: -35%);
 }
