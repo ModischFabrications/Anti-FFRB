@@ -6,6 +6,10 @@
 	import Settings from "./components/Settings.svelte";
 	import Preview from "./components/Preview.svelte";
 	import NavBar from "./components/NavBar.svelte";
+
+	function sendAlert() {
+		alert("Stop that!");
+	}
 </script>
 
 <svelte:head>
@@ -36,7 +40,7 @@
 
 		<LayoutGrid>
 			<Cell span={8}>
-				<Preview />
+				<Preview on:prediction={sendAlert} />
 			</Cell>
 			<Cell span={4}>
 				<Settings />

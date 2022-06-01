@@ -1,6 +1,9 @@
 <script lang="ts">
     import { fade } from "svelte/transition";
     import * as handTrack from "handtrackjs";
+    import { createEventDispatcher } from "svelte";
+
+    const dispatch = createEventDispatcher();
 
     // TODO tune to perfection; maybe extract into settings
     const modelParams = {
@@ -47,6 +50,8 @@
         if (hands.length < 1) return;
 
         // TODO boundry box check
+
+        dispatch("prediction", [faces, hands]);
     }
 
     function runDetection() {
