@@ -34,7 +34,6 @@
         }, 100);
     });
 
-    // TODO emit as event for external analysis
     function handlePredictions(
         ps: {
             bbox: number[];
@@ -108,7 +107,7 @@
         {/await}
     </div>
     {#if no_face}
-        <p class="error-text" transition:fade>No face found.</p>
+        <p class="warn-text" transition:fade>No face found.</p>
     {/if}
     {#if no_cam}
         <p class="error-text" transition:fade>
@@ -135,9 +134,5 @@
     .video-container {
         width: 100%;
         border-radius: inherit;
-    }
-
-    .error-text {
-        color: hsl(0, 40%, 50%);
     }
 </style>

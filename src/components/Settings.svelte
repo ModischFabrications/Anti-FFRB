@@ -1,7 +1,7 @@
 <script lang="ts">
     import Switch from "@smui/switch";
     import FormField from "@smui/form-field";
-    import { slide } from "svelte/transition";
+    import { fade } from "svelte/transition";
 
     export let alerts = {
         sound: true,
@@ -29,6 +29,6 @@
     </div>
 
     {#if !Object.values(alerts).some(a => a)}
-        <p transition:slide>Are you sure you don't want anything?</p>
+        <p class="warn-text" transition:fade>Are you sure you don't want anything?</p>
     {/if}
 </div>

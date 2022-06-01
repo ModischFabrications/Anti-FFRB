@@ -57,4 +57,12 @@
 		margin: auto;
 		max-width: 140ch;
 	}
+
+	:global(.error-text) {
+        color: hsl(0, 40%, 50%);
+    }
+
+	:global(.warn-text) {
+        color: hsl(46, 100%, 40%)
+    }
 </style>
