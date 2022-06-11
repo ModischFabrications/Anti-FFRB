@@ -11,15 +11,28 @@
 	let alertSettings: Writable<Alerts>;
 
 	// only mp3/wav are universally supported
-	let alertSound = new Audio(
+	const alertSound = new Audio(
 		"https://upload.wikimedia.org/wikipedia/commons/transcoded/3/34/Buzzer.ogg/Buzzer.ogg.mp3"
 	);
+	
+	let flashTimer;
 
 	function sendAlert() {
-		if ($alertSettings.popup) alert("Stop that!");
-		if ($alertSettings.sound && alertSound.paused) alertSound.play(); // this needs a user interaction!
+		if ($alertSettings.popup) {
+			alert("Stop that!");
+		}
+
+		if ($alertSettings.sound && alertSound.paused) {
+			// this needs a prior user interaction!
+			alertSound.play();
+		}
+
 		if ($alertSettings.flashing) {
-			/* TODO*/
+			window.document.body.classList.add("flash");
+			clearTimeout(flashTimer);
+			flashTimer = setTimeout(() => {
+				window.document.body.classList.remove("flash");
+			}, 200);
 		}
 	}
 </script>
@@ -75,6 +88,16 @@
 		margin: auto;
 		max-width: 140ch;
 		text-align: center;
+	}
+
+	/* global needed to suppress stripping */
+	:global(.flash) {
+		animation: flash-anim 0.2s infinite alternate;
+	}
+
+	@keyframes flash-anim {
+		from { background-color: hsla(290, 100%, 40%, 0.5);}
+		to { background-color: hsla(59, 100%, 40%, 0.5);}
 	}
 
 	:global(.error-text) {
