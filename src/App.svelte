@@ -2,12 +2,13 @@
 	export let app_name: string;
 	export let app_version: string;
 	import LayoutGrid, { Cell } from "@smui/layout-grid";
+	import type { Writable } from "svelte/store";
 
-	import Settings from "./components/Settings.svelte";
+	import Settings, { Alerts } from "./components/Settings.svelte";
 	import Preview from "./components/Preview.svelte";
 	import NavBar from "./components/NavBar.svelte";
 
-	let alertSettings: { popup: boolean; sound: boolean; flashing: boolean };
+	let alertSettings: Writable<Alerts>;
 
 	// only mp3/wav are universally supported
 	let alertSound = new Audio(
@@ -15,9 +16,9 @@
 	);
 
 	function sendAlert() {
-		if (alertSettings.popup) alert("Stop that!");
-		if (alertSettings.sound && alertSound.paused) alertSound.play(); // this needs a user interaction!
-		if (alertSettings.flashing) {
+		if ($alertSettings.popup) alert("Stop that!");
+		if ($alertSettings.sound && alertSound.paused) alertSound.play(); // this needs a user interaction!
+		if ($alertSettings.flashing) {
 			/* TODO*/
 		}
 	}
@@ -54,7 +55,7 @@
 				<Preview on:detection={sendAlert} />
 			</Cell>
 			<Cell span={4}>
-				<Settings bind:alerts={alertSettings} />
+				<Settings bind:alertsStore={alertSettings} />
 			</Cell>
 		</LayoutGrid>
 	</div>

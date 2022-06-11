@@ -10,9 +10,9 @@
         flipHorizontal: true, // flip e.g for video
         maxNumBoxes: 10, // maximum number of boxes to detect
         iouThreshold: 0.5, // ioU threshold for non-max suppression ???
-        scoreThreshold: 0.4, // confidence threshold for predictions.
-        modelType: "ssd640fpnlite", // better detection of face/hand overlaps
-        modelSize: "small",
+        scoreThreshold: 0.5, // confidence threshold for predictions.
+        //modelType: "ssd640fpnlite", // better detection of face/hand overlaps
+        //modelSize: "small",
     };
 
     let canvas: HTMLCanvasElement;
@@ -99,7 +99,7 @@
     <div class="preview-container" alt="video stream preview">
         {#await modelPromise}
             <p>The AI is still waking up, this might take a while..</p>
-        {:then res}
+        {:then _}
             <!-- svelte-ignore a11y-media-has-caption -->
             <video style="display: none;" bind:this={video} />
             <canvas class="video-container" bind:this={canvas} />

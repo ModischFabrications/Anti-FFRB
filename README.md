@@ -88,6 +88,7 @@ I'm also using https://counter.dev/ to track page visits without compromising an
 14. https://deanattali.com/blog/multiple-github-pages-domains/
 15. https://dev.to/danawoodman/svelte-quick-tip-connect-a-store-to-local-storage-4idi
 16. https://fonts.google.com/icons
+17. https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces
 
 ## Design Decisions
 ### Language
