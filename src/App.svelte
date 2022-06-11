@@ -44,11 +44,12 @@
 	<div class="content">
 		<h2>WORK IN PROGRESS!</h2>
 		<h2>
-			This will eventually be a utility to combat <a
+			This is a utility to combat <a
 				href="https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior"
 				>Face-focused repetitive behaviors (FFRBs)</a
-			>
+			>.
 		</h2>
+		<h3>Select your preferred alert and try touching your face!</h3>
 
 		<LayoutGrid>
 			<Cell span={8}>
@@ -58,6 +59,13 @@
 				<Settings bind:alertsStore={alertSettings} />
 			</Cell>
 		</LayoutGrid>
+
+		<!-- TODO needs better whitespace handling of errors 
+		<p>
+			Hint: Try facing the camera and turning on your lights if detection is
+			unreliable.
+		</p> 
+		-->
 	</div>
 </main>
 
@@ -66,6 +74,7 @@
 		padding: 2em;
 		margin: auto;
 		max-width: 140ch;
+		text-align: center;
 	}
 
 	:global(.error-text) {

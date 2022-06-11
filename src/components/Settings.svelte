@@ -17,7 +17,7 @@
     import FormField from "@smui/form-field";
     import { fade } from "svelte/transition";
     import { writable } from "svelte/store";
-    
+
     // getItem can handle undefined objects
     export const alertsStore = writable<Alerts>(
         localStorage.alerts
@@ -27,7 +27,7 @@
     alertsStore.subscribe((val) => (localStorage.alerts = JSON.stringify(val)));
 </script>
 
-<div>
+<div class="settings-container">
     <p>How do you want to be alerted?</p>
     <div>
         <FormField>
@@ -57,3 +57,9 @@
         </p>
     {/if}
 </div>
+
+<style>
+    .settings-container {
+        text-align: left;
+    }
+</style>
