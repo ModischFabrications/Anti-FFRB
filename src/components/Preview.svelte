@@ -128,8 +128,8 @@
         align-items: center;
         aspect-ratio: 4/3;
 
-        border-radius: 0.5em;
-        outline: 0.3em solid hsl(0, 0%, 70%, 0.5);
+        border-radius: 0.5rem;
+        outline: 0.3rem solid hsl(0, 0%, 70%, 0.5);
     }
 
     .video-container {

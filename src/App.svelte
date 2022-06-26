@@ -84,7 +84,7 @@
 
 <style>
 	.content {
-		padding: 2em;
+		padding: 2rem;
 		margin: auto;
 		max-width: 140ch;
 		text-align: center;
