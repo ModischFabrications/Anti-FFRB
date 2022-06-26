@@ -141,6 +141,6 @@
 
     .info-container {
         margin: 1rem;
-        min-height: 3rem;
+        min-height: 2rem;
     }
 </style>

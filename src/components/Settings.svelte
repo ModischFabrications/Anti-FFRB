@@ -51,15 +51,22 @@
         </FormField>
     </div>
 
-    {#if !Object.values($alertsStore).some((a) => a)}
-        <p class="warn-text" transition:fade>
-            Are you sure you don't want anything?
-        </p>
-    {/if}
+    <div class="info-container">
+        {#if !Object.values($alertsStore).some((a) => a)}
+            <p class="warn-text" transition:fade>
+                Are you sure you don't want anything?
+            </p>
+        {/if}
+    </div>
 </div>
 
 <style>
     .settings-container {
         text-align: left;
+    }
+
+    .info-container {
+        margin: 1rem;
+        min-height: 2rem;
     }
 </style>
