@@ -53,13 +53,13 @@
 
 <NavBar {app_name} {app_version} />
 <main>
-	<h2>
+	<h3>
 		This is a utility to combat <a
 			href="https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior"
 			>Face-focused repetitive behaviors (FFRBs)</a
 		>.
-	</h2>
-	<h3>Select your preferred alert and try touching your face!</h3>
+	</h3>
+	<p>Select your preferred alert and try touching your face!</p>
 
 	<LayoutGrid>
 		<Cell span={8}>
@@ -86,9 +86,9 @@
 
 <style>
 	main {
-		padding: 2rem 1rem;
+		padding: 1rem;
 		margin: auto;
-		max-width: 110ch;
+		/* max-width: 100ch; */
 		text-align: center;
 
 		flex: 1;

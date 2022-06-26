@@ -11,7 +11,7 @@
     export let app_version: string;
 </script>
 
-<TopAppBar variant="standard" dense>
+<TopAppBar variant="static" dense>
     <Row>
         <Section>
             <Title>{app_name} {app_version}</Title>
