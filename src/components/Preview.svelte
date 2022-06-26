@@ -24,12 +24,12 @@
     let no_face = false;
     let no_cam = false;
 
-    // TODO delay a bit to load page cleanly, maybe just offer a button
+    // TODO delay a bit to load page cleanly, maybe just offer a button?
     let modelPromise = handTrack.load(modelParams).then((lmodel) => {
         model = lmodel;
         console.log("model loaded");
 
-        // TODO connect to toggle/dropdown
+        // TODO connect to toggle/dropdown?
         setTimeout(() => {
             startVideo();
         }, 100);
@@ -75,7 +75,7 @@
     function startVideo() {
         console.log("Starting video stream...");
 
-        // TODO add promise to second #await
+        // TODO add promise to second #await to show video loading
         handTrack.startVideo(video).then(function (res) {
             console.log("--> " + res.msg);
             if (res.status) {
@@ -107,14 +107,16 @@
             <p style="color: red">{error.message}</p>
         {/await}
     </div>
-    {#if no_face}
-        <p class="warn-text" transition:fade>No face found.</p>
-    {/if}
-    {#if no_cam}
-        <p class="error-text" transition:fade>
-            No stream. Please allow video access.
-        </p>
-    {/if}
+    <div class="info-container">
+        {#if no_face}
+            <p class="warn-text" transition:fade>No face found.</p>
+        {/if}
+        {#if no_cam}
+            <p class="error-text" transition:fade>
+                No stream. Please allow video access.
+            </p>
+        {/if}
+    </div>
 </div>
 
 <style>
@@ -135,5 +137,10 @@
     .video-container {
         width: 100%;
         border-radius: inherit;
+    }
+
+    .info-container {
+        margin: 1rem;
+        min-height: 3rem;
     }
 </style>

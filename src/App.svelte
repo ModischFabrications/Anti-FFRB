@@ -14,7 +14,7 @@
 	const alertSound = new Audio(
 		"https://upload.wikimedia.org/wikipedia/commons/transcoded/3/34/Buzzer.ogg/Buzzer.ogg.mp3"
 	);
-	
+
 	let flashTimer;
 
 	function sendAlert() {
@@ -73,12 +73,10 @@
 			</Cell>
 		</LayoutGrid>
 
-		<!-- TODO needs better whitespace handling of errors 
-		<p>
-			Hint: Try facing the camera and turning on your lights if detection is
-			unreliable.
-		</p> 
-		-->
+		<p class="hint-text">
+			Hint: Try facing the camera and turning on your lights if detection
+			is unreliable.
+		</p>
 	</div>
 </main>
 
@@ -86,7 +84,7 @@
 	.content {
 		padding: 2rem;
 		margin: auto;
-		max-width: 140ch;
+		max-width: 120ch;
 		text-align: center;
 	}
 
@@ -96,8 +94,12 @@
 	}
 
 	@keyframes flash-anim {
-		from { background-color: hsla(290, 100%, 40%, 0.5);}
-		to { background-color: hsla(59, 100%, 40%, 0.5);}
+		from {
+			background-color: hsla(290, 100%, 40%, 0.5);
+		}
+		to {
+			background-color: hsla(59, 100%, 40%, 0.5);
+		}
 	}
 
 	:global(.error-text) {
@@ -106,5 +108,9 @@
 
 	:global(.warn-text) {
 		color: hsl(46, 100%, 40%);
+	}
+
+	:global(.hint-text) {
+		opacity: 0.5;
 	}
 </style>
