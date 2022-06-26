@@ -53,30 +53,27 @@
 
 <NavBar {app_name} {app_version} />
 <main>
-	<div class="content">
-		<h2>WORK IN PROGRESS!</h2>
-		<h2>
-			This is a utility to combat <a
-				href="https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior"
-				>Face-focused repetitive behaviors (FFRBs)</a
-			>.
-		</h2>
-		<h3>Select your preferred alert and try touching your face!</h3>
+	<h2>
+		This is a utility to combat <a
+			href="https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior"
+			>Face-focused repetitive behaviors (FFRBs)</a
+		>.
+	</h2>
+	<h3>Select your preferred alert and try touching your face!</h3>
 
-		<LayoutGrid>
-			<Cell span={8}>
-				<Preview on:detection={sendAlert} />
-			</Cell>
-			<Cell span={4}>
-				<Settings bind:alertsStore={alertSettings} />
-			</Cell>
-		</LayoutGrid>
+	<LayoutGrid>
+		<Cell span={8}>
+			<Preview on:detection={sendAlert} />
+		</Cell>
+		<Cell span={4}>
+			<Settings bind:alertsStore={alertSettings} />
+		</Cell>
+	</LayoutGrid>
 
-		<p class="hint-text">
-			Hint: Try facing the camera and turning on your lights if detection
-			is unreliable.
-		</p>
-	</div>
+	<p class="hint-text">
+		Hint: Try facing the camera and turning on your lights if detection is
+		unreliable.
+	</p>
 </main>
 <footer>
 	<p class="copyright">
@@ -94,14 +91,12 @@
 		max-width: 110ch;
 		text-align: center;
 
-		flex:1;
+		flex: 1;
 	}
 
 	footer {
 		opacity: 0.6;
 		text-align: center;
-
-		height:4rem;
 	}
 
 	/* global needed to suppress stripping */

@@ -120,7 +120,7 @@
 </div>
 
 <style>
-    /* handtracking uses a ratio of 4/3, so we normalize to that */
+    /* handtrack.js uses a ratio of 4/3, so we normalize to that */
     .preview-container {
         background: hsla(0, 0%, 70%, 0.3);
         width: 100%;
