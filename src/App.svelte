@@ -51,9 +51,8 @@
 	<meta property="og:title" content="{app_name}: Stop nail biting now!" />
 </svelte:head>
 
+<NavBar {app_name} {app_version} />
 <main>
-	<NavBar {app_name} {app_version} />
-
 	<div class="content">
 		<h2>WORK IN PROGRESS!</h2>
 		<h2>
@@ -79,13 +78,30 @@
 		</p>
 	</div>
 </main>
+<footer>
+	<p class="copyright">
+		© 2022 Robin Modisch | <a
+			href="https://www.iubenda.com/privacy-policy/30608053"
+			>Privacy Policy</a
+		>
+	</p>
+</footer>
 
 <style>
-	.content {
-		padding: 2rem;
+	main {
+		padding: 2rem 1rem;
 		margin: auto;
-		max-width: 120ch;
+		max-width: 110ch;
 		text-align: center;
+
+		flex:1;
+	}
+
+	footer {
+		opacity: 0.6;
+		text-align: center;
+
+		height:4rem;
 	}
 
 	/* global needed to suppress stripping */
