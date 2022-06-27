@@ -3,7 +3,7 @@
     import * as handTrack from "handtrackjs";
     import { createEventDispatcher } from "svelte";
     import { missing_component } from "svelte/internal";
-    import { hasAnyCollision } from "../2d";
+    import { hasAnyCollision } from "./2d";
 
     // this should have been part of handTrack.js
     interface Prediction {
