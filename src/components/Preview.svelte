@@ -2,8 +2,20 @@
     import { fade } from "svelte/transition";
     import * as handTrack from "handtrackjs";
     import { createEventDispatcher } from "svelte";
+    import { missing_component } from "svelte/internal";
+    import { hasAnyCollision } from "../2d";
+
+    // this should have been part of handTrack.js
+    interface Prediction {
+        bbox: number[]; // xPos, yPos, Width, Height
+        class: number;
+        label: string;
+        score: string;
+    }
 
     const dispatch = createEventDispatcher();
+
+    const f_threshold = 0.1;
 
     // TODO tune to perfection; maybe extract into settings
     const modelParams = {
@@ -20,38 +32,51 @@
     let isVideo: boolean;
 
     let model = null;
+    let modelPromise = null;
 
     let no_face = false;
     let no_cam = false;
 
-    // TODO delay a bit to load page cleanly, maybe just offer a button?
-    let modelPromise = handTrack.load(modelParams).then((lmodel) => {
-        model = lmodel;
-        console.log("model loaded");
+    // TODO maybe just offer a button?
+    setTimeout(loadModel, 100);
 
-        // TODO connect to toggle/dropdown?
-        setTimeout(() => {
-            startVideo();
-        }, 100);
-    });
+    function loadModel() {
+        console.log("loading model, this might take a while...");
+        modelPromise = handTrack.load(modelParams).then((lmodel) => {
+            model = lmodel;
+            console.log("model loaded");
 
-    function handlePredictions(
-        ps: {
-            bbox: number[];
-            class: number;
-            label: string;
-            score: string;
-        }[]
-    ) {
-        let faces = ps.filter((p) => p.label == "face");
+            // TODO connect to toggle/dropdown?
+            setTimeout(() => {
+                startVideo();
+            }, 100);
+        });
+    }
+
+    function handlePredictions(ps: Prediction[]) {
+        let faces = ps
+            .filter((p) => p.label == "face")
+            .sort((a, b) => Number(a.score) - Number(b.score));
         no_face = faces.length == 0;
+        if (no_face) return;
 
-        let hands = ps.filter((x) => !faces.includes(x));
+        let hands = ps
+            .filter((x) => !faces.includes(x))
+            .sort((a, b) => Number(a.score) - Number(b.score));
         if (hands.length < 1) return;
 
-        // TODO boundry box check, wait for x seconds continuous
+        // diagonal is more expensive and can be packed into multiplier
+        let threshold = faces[0].bbox[2] * f_threshold;
+        let collison = hasAnyCollision(
+            faces.map((f) => f.bbox),
+            hands.map((h) => h.bbox),
+            threshold
+        );
+        if (!collison) return;
 
-        dispatch("detection", [faces, hands]);
+        // TODO wait for x seconds continuous
+
+        dispatch("detection");
     }
 
     function runDetection() {
