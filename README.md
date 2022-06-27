@@ -1,5 +1,4 @@
-## **WORK IN PROGRESS**
-
+[![Build and Deploy](https://github.com/ModischFabrications/Anti-FFRB/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/ModischFabrications/Anti-FFRB/actions/workflows/gh-pages.yml)
 
 # Anti-FFRB
 
