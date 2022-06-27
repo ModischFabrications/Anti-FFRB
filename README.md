@@ -99,7 +99,9 @@ Python is my go-to for simple tools. Deployment of Python code is a huge mess th
 Functionality on a website is just so much better to get this concept to the people that I need to try it.
 WASM would be great for performant detection logic, but it's not worth the effort atm.
 
-Cross-platform is also great, but my simple example app is fine to have a singular native (but multi-usable) platform for now. 
+Compiled cross-platform is also great, but my simple example app is fine to have a singular native (but multi-usable) platform for now. 
+
+*Retrospective*: Web is king for portability, can't argue with that. Still shit to develop for though, even with modern helpers, and lacks performance (threading!). 
 
 ### Framework
 No backend is needed, everything is offline. 
@@ -121,6 +123,24 @@ Solid uses Vite, a great build tool, and is even newer, but [lacks the community
 While I don't need Reacts community I depend on examples, which makes the tiny differences between them less important.
 
 [SvelteKit](https://kit.svelte.dev/) seems like a worthy addition for larger apps, but let's keep it simple for now. 
+
+*Retrospective*: Svelte has some quirks, but it's easy to learn and use. Can recommend, even without SvelteKit. 
+Not sure if a framework is actually necessary for such a small app though. 
+
+### Generic detection vs trained AI
+[Tensorflow](https://www.tensorflow.org/js) could build a neuronal net to detect more complex patterns, but that would only work for my face. 
+[Teachable Machine](https://teachablemachine.withgoogle.com/) is a great tool for people that skipped AI in their classes (me included). 
+
+Ask some PhD for a cooler model or another AI-driven approach to detect more behaviors. 
+
+Generic JS tracking libs:
+- [MediaPipe](https://mediapipe.dev/): Powerful AIO cross-platform stream analysis solution from Google
+- [Handtrack.js](https://victordibia.com/handtrack.js): Easy and simple, exact use case
+- [Handsfree.js](https://handsfree.js.org/): Alternative with additional poses
+
+Handtrack.js has a great demo and seems easy to use, so let's test that one for now.
+
+*Retrospective*: Handtrack.js is dead in the water. Tracking is flaky and there are a lot of obvious issues without any statement from the main dev. Latest release still feels like early beta, use something better!
 
 ### UI Library
 As I know now there are no generic UI components in Svelte (or any similar framework), so you need to choose something. Integration with the framework is nice, but optional. It should offer many components to prevent me from building ugly ones though. 
@@ -145,18 +165,8 @@ Others are too tiny or unstable to recommend.
 My final candidates were Svelte Material UI, Bulma and DaisyUI. Latter ones are more beautiful, the great integration of the former seems better for someone without any background though.
 SMUI also contains simple Icons, provided by Material UI. Future work could use [Feather](https://feathericons.com/) and it's Svelte binding or even [Svelte Icons](https://svelte-icons.vercel.app/) as an all-in-one importer for everything. 
 
-### Generic detection vs trained AI
-[Tensorflow](https://www.tensorflow.org/js) could build a neuronal net to detect more complex patterns, but that would only work for my face. 
-[Teachable Machine](https://teachablemachine.withgoogle.com/) is a great tool for people that skipped AI in their classes (me included). 
-
-Ask some PhD for a cooler model or another AI-driven approach to detect more behaviors. 
-
-Generic tracking libs:
-- [MediaPipe](https://mediapipe.dev/): Powerful AIO cross-platform stream analysis solution from Google
-- [Handtrack.js](https://victordibia.com/handtrack.js): Easy and simple, exact use case
-- [Handsfree.js](https://handsfree.js.org/): Alternative with additional poses
-
-Handtrack.js has a great demo and seems easy to use, so let's test that one for now.
+*Retrospective*: Svelte Material UI definitely isn't production ready yet. It's nice when it works, but there are components missing (footer!), weird hacks for existing ones (standard header) and very little documentation. 
+I would advise against it in favor of something bigger and better documented, maybe even vanilla CSS or some generic framework. 
 
 ### Deployment
 Selfhosting is great if you know what you do, but that's not my case. 
@@ -170,17 +180,20 @@ CDN makes high performance usage of a static app much easier than delivering eve
 Svelte integration seems to be surprisingly simple because you only need to copy the build directory over. 
 Using Github Actions makes sense, I don't want to keep updating everything manually. 
 
+*Retrospective*: GH Pages was obviously easy to integrate and is still a great choice. 
+Cloudflare pages is a close contender because of great edge availability and powerful free offering; making CDNs obsolete. Keep GH Actions for builds though. 
+
 ### Alerts
-1. Screen flickering makes sense if you are sitting in front of it. Difficult to integrate though.
-2. Sound warnings are jarring, but easier
-3. Popups are annoying, but also boring
+1. Screen flickering makes sense if you are sitting in front of it, but they aren't great for people with epileptic seizures.
+2. Sound warnings are jarring, but easier. Definitely most annoying. 
+3. Popups are annoying to use, but also boring and easy to ignore. 
 
 ## Q & A
 Q: Why build this?  
 A: Ignoring bad habits is a bad habit of mine, let's see if a self-made solution helps.
 
 Q: Privacy?  
-A: Nothing leaves your computer, everything is offline. Why would I pay server costs to capture hours of face-videos?
+A: Nothing leaves your computer, everything is offline. Who would pay server costs to capture hours of your face?
 
 ## Contributing
 Feel free to contact me or make a pull-request if you want to participate.
