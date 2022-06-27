@@ -29,27 +29,22 @@
 
     let canvas: HTMLCanvasElement;
     let video: HTMLVideoElement;
+    let context: CanvasRenderingContext2D;
+
     let isVideo: boolean;
 
     let model = null;
-    let modelPromise = null;
 
     let no_face = false;
     let no_cam = false;
 
-    // TODO maybe just offer a button?
-    setTimeout(loadModel, 100);
+    loadModel();
 
     function loadModel() {
         console.log("loading model, this might take a while...");
-        modelPromise = handTrack.load(modelParams).then((lmodel) => {
+        handTrack.load(modelParams).then((lmodel) => {
             model = lmodel;
             console.log("model loaded");
-
-            // TODO connect to toggle/dropdown?
-            setTimeout(() => {
-                startVideo();
-            }, 100);
         });
     }
 
@@ -83,12 +78,7 @@
         model.detect(video).then((predictions) => {
             if (!isVideo) return;
 
-            model.renderPredictions(
-                predictions,
-                canvas,
-                canvas.getContext("2d"),
-                video
-            );
+            model.renderPredictions(predictions, canvas, context, video);
 
             handlePredictions(predictions);
 
@@ -97,8 +87,15 @@
         });
     }
 
+    function toggleVideo() {
+        if (!model) return;
+        if (isVideo) stopVideo();
+        else startVideo();
+    }
+
     function startVideo() {
         console.log("Starting video stream...");
+        context = canvas.getContext("2d");
 
         // TODO add promise to second #await to show video loading
         handTrack.startVideo(video).then(function (res) {
@@ -115,45 +112,52 @@
     }
 
     function stopVideo() {
+        console.log("Stopping video stream...");
         handTrack.stopVideo(video);
+        context.clearRect(0, 0, canvas.width, canvas.height);
         isVideo = false;
     }
 </script>
 
 <div>
-    <div class="preview-container" alt="video stream preview">
-        {#await modelPromise}
-            <p>The AI is still waking up, this might take a while..</p>
-        {:then _}
-            <!-- svelte-ignore a11y-media-has-caption -->
-            <video style="display: none;" bind:this={video} />
-            <canvas class="video-container" bind:this={canvas} />
-        {:catch error}
-            <p style="color: red">{error.message}</p>
-        {/await}
+    <div class="preview-container" on:click={toggleVideo}>
+        <div class="placeholder-container">
+            {#if !model}
+                <p in:fade>The AI is still waking up, this might take a while..</p>
+            {:else if !isVideo}
+                <p in:fade>Click to start</p>
+            {:else if no_cam}
+                <p class="error-text" in:fade>
+                    No stream. Please allow video access.
+                </p>
+            {:else}
+                <p in:fade>This should be a video...</p>
+            {/if}
+        </div>
+
+        <!-- svelte-ignore a11y-media-has-caption -->
+        <video style="display: none;" bind:this={video} />
+        <canvas class="video-container" bind:this={canvas} />
     </div>
-    <div class="info-container">
+    <div class="p-container">
         {#if no_face}
             <p class="warn-text" transition:fade>No face found.</p>
-        {/if}
-        {#if no_cam}
-            <p class="error-text" transition:fade>
-                No stream. Please allow video access.
-            </p>
         {/if}
     </div>
 </div>
 
 <style>
+    .placeholder-container {
+        position: absolute;
+    }
+
     /* handtrack.js uses a ratio of 4/3, so we normalize to that */
     .preview-container {
         background: hsla(0, 0%, 70%, 0.3);
-        width: 100%;
-        height: 100%;
+        aspect-ratio: 4/3;
         display: flex;
         justify-content: center;
         align-items: center;
-        aspect-ratio: 4/3;
 
         border-radius: 0.5rem;
         outline: 0.3rem solid hsl(0, 0%, 70%, 0.5);
@@ -162,10 +166,6 @@
     .video-container {
         width: 100%;
         border-radius: inherit;
-    }
-
-    .info-container {
-        margin: 1rem;
-        min-height: 2rem;
+        z-index: 1;
     }
 </style>

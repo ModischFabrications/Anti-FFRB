@@ -51,7 +51,7 @@
         </FormField>
     </div>
 
-    <div class="info-container">
+    <div class="p-container">
         {#if !Object.values($alertsStore).some((a) => a)}
             <p class="warn-text" transition:fade>
                 Are you sure you don't want anything?
@@ -63,10 +63,5 @@
 <style>
     .settings-container {
         text-align: left;
-    }
-
-    .info-container {
-        margin: 1rem;
-        min-height: 2rem;
     }
 </style>

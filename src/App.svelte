@@ -124,4 +124,9 @@
 	:global(.hint-text) {
 		opacity: 0.5;
 	}
+
+	:global(.p-container) {
+		margin: 1rem;
+		min-height: 2rem;
+	}
 </style>
