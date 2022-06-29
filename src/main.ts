@@ -4,7 +4,7 @@ const app = new App({
 	target: document.body,
 	props: {
 		app_name: 'Anti-FFRB',
-		app_version: 'v0.5',
+		app_version: 'v0.6',
 	}
 });
 
