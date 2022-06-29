@@ -2,8 +2,13 @@
     import { fade } from "svelte/transition";
     import * as handTrack from "handtrackjs";
     import { createEventDispatcher } from "svelte";
-    import { missing_component } from "svelte/internal";
     import { hasAnyCollision } from "./2d";
+    import Fa from "svelte-fa";
+    import {
+        faCirclePlay,
+        faCirclePause,
+        faSpinner,
+    } from "@fortawesome/free-solid-svg-icons";
 
     // this should have been part of handTrack.js
     interface Prediction {
@@ -121,11 +126,18 @@
 
 <div>
     <div class="preview-container" on:click={toggleVideo}>
-        <div class="placeholder-container">
+        <div class="overlay-container">
             {#if !model}
-                <p in:fade>The AI is still waking up, this might take a while..</p>
-            {:else if !isVideo}
+                <Fa icon={faSpinner} size="4x" class="spinner" />
+                <p in:fade>
+                    The AI is still waking up, this might take a while..
+                </p>
+            {:else if !isVideo && !no_cam}
+                <Fa icon={faCirclePlay} size="4x" />
                 <p in:fade>Click to start</p>
+            {:else if isVideo && !no_cam}
+                <Fa icon={faCirclePause} size="4x" class="hoverhint" />
+                <p in:fade class="hoverhint">Click to pause</p>
             {:else if no_cam}
                 <p class="error-text" in:fade>
                     No stream. Please allow video access.
@@ -147,7 +159,7 @@
 </div>
 
 <style>
-    .placeholder-container {
+    .overlay-container {
         position: absolute;
     }
 
@@ -164,8 +176,18 @@
     }
 
     .video-container {
+        pointer-events: none;
         width: 100%;
         border-radius: inherit;
-        z-index: 1;
+    }
+
+    .preview-container:hover :global(.hoverhint) {
+        opacity: 0.7;
+        transition: 0.5s ease;
+    }
+
+    :global(.hoverhint) {
+        opacity: 0;
+        transition: 0.5s ease;
     }
 </style>
