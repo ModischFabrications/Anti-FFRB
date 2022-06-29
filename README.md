@@ -67,6 +67,8 @@ Copy `./public/` to your webhost of choice.
 - [Svelte](https://svelte.dev/)
 - [Svelte Material UI](https://sveltematerialui.com/)
 - [Handtrack.js](https://victordibia.com/handtrack.js)
+- [Fontawesome](https://fontawesome.com/) + [svelte-fa](https://github.com/Cweili/svelte-fa): Icons + Bindings
+
 
 I'm also using https://counter.dev/ to track page visits without compromising any privacy with Google Analytics. 
 
@@ -162,16 +164,16 @@ Full Svelte integration (based on [other](https://medium.com/mkdir-awesome/8-pop
 Others are too tiny or unstable to recommend. 
 
 My final candidates were Svelte Material UI, Bulma and DaisyUI. Latter ones are more beautiful, the great integration of the former seems better for someone without any background though.
-SMUI also contains simple Icons, provided by Material UI. Future work could use [Feather](https://feathericons.com/) and it's Svelte binding or even [Svelte Icons](https://svelte-icons.vercel.app/) as an all-in-one importer for everything. 
+SMUI also contains simple Icons, provided by Material UI. Future work could use [FontAwesome](https://fontawesome.com/) as the biggest player, [Material Design Icons](https://materialdesignicons.com/) as a large crowd-sourced collection or something Svelte specific like [Svelte Icons](https://svelte-icons.vercel.app/) as an all-in-one importer for everything. 
 
-*Retrospective*: Svelte Material UI definitely isn't production ready yet. It's nice when it works, but there are components missing (footer!), weird hacks for existing ones (standard header) and very little documentation. 
+*Retrospective*: Svelte Material UI definitely isn't production ready yet. It's nice when it works, but there are components missing (footer!), weird hacks for existing ones (standard header) and very little documentation. Icons are limited to original Material UI Icons, missing Github & others, which makes the documentation even less relevant. 
 I would advise against it in favor of something bigger and better documented, maybe even vanilla CSS or some generic framework. 
 
 ### Deployment
 Selfhosting is great if you know what you do, but that's not my case. 
 Luckily there are a few free options for developers. 
 
-There are [better](https://free-for.dev/#/?id=web-hosting) comparison [lists](https://github.com/255kb/stack-on-a-budget/blob/master/pages/static-app-hosting.md) than mine.
+Summary: There are [better](https://free-for.dev/#/?id=web-hosting) comparison [lists](https://github.com/255kb/stack-on-a-budget/blob/master/pages/static-app-hosting.md) than mine.
 
 CDN makes high performance usage of a static app much easier than delivering everything yourself. 
 [Do this if you want to prevent a hug of death](https://noted.lol/noted-survived-top-3-on-hacker-news-how-did-it-effect-my-homelab/). 

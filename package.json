@@ -12,6 +12,8 @@
     "smui-theme-dark": "smui-theme compile public/build/smui-dark.css -i src/theme/dark"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
@@ -29,6 +31,7 @@
     "smui-theme": "^6.0.0-beta.16",
     "svelte": "^3.0.0",
     "svelte-check": "^2.0.0",
+    "svelte-fa": "^3.0.2",
     "svelte-material-ui": "^6.0.0-beta.16",
     "svelte-preprocess": "^4.0.0",
     "tslib": "^2.0.0",

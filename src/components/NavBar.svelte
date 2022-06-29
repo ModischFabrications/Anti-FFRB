@@ -2,7 +2,10 @@
     import { writable } from "svelte/store";
     import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
     import IconButton, { Icon } from "@smui/icon-button";
+    import { Svg } from "@smui/common/elements";
     import Tooltip, { Wrapper } from "@smui/tooltip";
+    import Fa from "svelte-fa";
+    import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
     export const darkMode = writable<boolean>(localStorage.darkMode == "true");
     darkMode.subscribe((value) => (localStorage.darkMode = String(value)));
@@ -21,8 +24,12 @@
                 <IconButton
                     class="material-icons"
                     href="https://github.com/ModischFabrications/Anti-FFRB"
-                    target="_blank">info</IconButton
+                    target="_blank"
                 >
+                    <Icon component={Svg} viewBox="0 0 24 24">
+                        <Fa icon={faGithub} />
+                    </Icon>
+                </IconButton>
                 <Tooltip>View on GitHub</Tooltip>
             </Wrapper>
             <!-- <Wrapper>
