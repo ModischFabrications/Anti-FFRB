@@ -1,8 +1,7 @@
 <script lang="ts">
     import { writable } from "svelte/store";
     import TopAppBar, { Row, Section, Title } from "@smui/top-app-bar";
-    import IconButton, { Icon } from "@smui/icon-button";
-    import { Svg } from "@smui/common/elements";
+    import IconButton from "@smui/icon-button";
     import Tooltip, { Wrapper } from "@smui/tooltip";
     import Fa from "svelte-fa";
     import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -26,9 +25,7 @@
                     href="https://github.com/ModischFabrications/Anti-FFRB"
                     target="_blank"
                 >
-                    <Icon component={Svg} viewBox="0 0 24 24">
-                        <Fa icon={faGithub} />
-                    </Icon>
+                    <Fa icon={faGithub} />
                 </IconButton>
                 <Tooltip>View on GitHub</Tooltip>
             </Wrapper>
