@@ -67,7 +67,7 @@ Copy `./public/` to your webhost of choice.
 - [Svelte](https://svelte.dev/)
 - [Svelte Material UI](https://sveltematerialui.com/)
 - [Handtrack.js](https://victordibia.com/handtrack.js)
-- [Fontawesome](https://fontawesome.com/) + [svelte-fa](https://github.com/Cweili/svelte-fa): Icons + Bindings
+- [Fontawesome](https://fontawesome.com/) + [svelte-fa](https://github.com/Cweili/svelte-fa)
 
 
 I'm also using https://counter.dev/ to track page visits without compromising any privacy with Google Analytics. 
