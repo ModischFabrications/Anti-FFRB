@@ -18,7 +18,7 @@ function hasCollision(face: number[], hand: number[], threshold: number): boolea
 
     let hIsLowerDist = hand[1] - (face[1] + face[3]);
     let hIsHigherDist = face[1] - (hand[1] + hand[3]);
-    console.log(`hIsRightDist=${hIsRightDist.toFixed(1)}, hIsLeftDist=${hIsLeftDist.toFixed(1)}, hIsLowerDist=${hIsLowerDist.toFixed(1)}, hIsHigherDist=${hIsHigherDist.toFixed(1)}`);
+    // console.log(`hIsRightDist=${hIsRightDist.toFixed(1)}, hIsLeftDist=${hIsLeftDist.toFixed(1)}, hIsLowerDist=${hIsLowerDist.toFixed(1)}, hIsHigherDist=${hIsHigherDist.toFixed(1)}`);
 
     return (Math.max(hIsRightDist, hIsLeftDist) < threshold && Math.max(hIsLowerDist, hIsHigherDist) < threshold);
 }

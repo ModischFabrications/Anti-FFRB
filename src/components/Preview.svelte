@@ -36,13 +36,11 @@
     let video: HTMLVideoElement;
     let context: CanvasRenderingContext2D;
 
-    let isVideo: boolean;
+    let isVideoRunning = false;
+    let hasFace = true;
+    let camBlocked = false;
 
     let model = null;
-
-    let no_face = false;
-    let no_cam = false;
-
     loadModel();
 
     function loadModel() {
@@ -57,8 +55,8 @@
         let faces = ps
             .filter((p) => p.label == "face")
             .sort((a, b) => Number(a.score) - Number(b.score));
-        no_face = faces.length == 0;
-        if (no_face) return;
+        hasFace = faces.length > 0;
+        if (!hasFace) return;
 
         let hands = ps
             .filter((x) => !faces.includes(x))
@@ -81,7 +79,7 @@
 
     function runDetection() {
         model.detect(video).then((predictions) => {
-            if (!isVideo) return;
+            if (!isVideoRunning) return;
 
             model.renderPredictions(predictions, canvas, context, video);
 
@@ -94,7 +92,7 @@
 
     function toggleVideo() {
         if (!model) return;
-        if (isVideo) stopVideo();
+        if (isVideoRunning) stopVideo();
         else startVideo();
     }
 
@@ -107,10 +105,10 @@
             console.log("--> " + res.msg);
             if (res.status) {
                 console.log("Video started. Now tracking");
-                isVideo = true;
+                isVideoRunning = true;
                 runDetection();
             } else {
-                no_cam = true;
+                camBlocked = true;
             }
             video.style.height = "";
         });
@@ -120,7 +118,7 @@
         console.log("Stopping video stream...");
         handTrack.stopVideo(video);
         context.clearRect(0, 0, canvas.width, canvas.height);
-        isVideo = false;
+        isVideoRunning = false;
     }
 </script>
 
@@ -132,13 +130,13 @@
                 <p in:fade>
                     The AI is still waking up, this might take a while..
                 </p>
-            {:else if !isVideo && !no_cam}
+            {:else if !isVideoRunning && !camBlocked}
                 <Fa icon={faCirclePlay} size="4x" />
                 <p in:fade>Click to start</p>
-            {:else if isVideo && !no_cam}
+            {:else if isVideoRunning && !camBlocked}
                 <Fa icon={faCirclePause} size="4x" class="hoverhint" />
                 <p in:fade class="hoverhint">Click to pause</p>
-            {:else if no_cam}
+            {:else if camBlocked}
                 <p class="error-text" in:fade>
                     No stream. Please allow video access.
                 </p>
@@ -149,10 +147,10 @@
 
         <!-- svelte-ignore a11y-media-has-caption -->
         <video style="display: none;" bind:this={video} />
-        <canvas class="video-container" bind:this={canvas} />
+        <canvas class="prediction-container" bind:this={canvas} />
     </div>
     <div class="p-container">
-        {#if no_face}
+        {#if !hasFace}
             <p class="warn-text" transition:fade>No face found.</p>
         {/if}
     </div>
@@ -175,8 +173,7 @@
         outline: 0.3rem solid hsl(0, 0%, 70%, 0.5);
     }
 
-    .video-container {
-        pointer-events: none;
+    .prediction-container {
         width: 100%;
         border-radius: inherit;
     }
