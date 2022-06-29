@@ -76,9 +76,8 @@
 	</p>
 </main>
 <footer>
-	<p class="copyright">
-		© 2022 Robin Modisch | <a
-			href="https://www.iubenda.com/privacy-policy/30608053"
+	<p>
+		© 2022 Robin Modisch | <a href="https://legal.modisch.me/privacy_policy"
 			>Privacy Policy</a
 		>
 	</p>
