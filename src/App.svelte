@@ -120,6 +120,10 @@
 		color: hsl(46, 100%, 40%);
 	}
 
+	:global(.inlay-text) {
+		color: hsl(0, 0%, 60%);
+	}
+
 	:global(.hint-text) {
 		opacity: 0.5;
 	}

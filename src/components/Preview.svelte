@@ -126,16 +126,20 @@
     <div class="preview-container" on:click={toggleVideo}>
         <div class="overlay-container">
             {#if !model}
-                <Fa icon={faSpinner} size="4x" class="spinner" />
-                <p in:fade>
+                <Fa icon={faSpinner} size="4x" class="spinner inlay-text" />
+                <p in:fade class="inlay-text">
                     The AI is still waking up, this might take a while..
                 </p>
             {:else if !isVideoRunning && !camBlocked}
-                <Fa icon={faCirclePlay} size="4x" />
-                <p in:fade>Click to start</p>
+                <Fa icon={faCirclePlay} size="4x" class="inlay-text" />
+                <p in:fade class="inlay-text">Click to start</p>
             {:else if isVideoRunning && !camBlocked}
-                <Fa icon={faCirclePause} size="4x" class="hoverhint" />
-                <p in:fade class="hoverhint">Click to pause</p>
+                <Fa
+                    icon={faCirclePause}
+                    size="4x"
+                    class="hoverhint inlay-text"
+                />
+                <p in:fade class="hoverhint inlay-text">Click to pause</p>
             {:else if camBlocked}
                 <p class="error-text" in:fade>
                     No stream. Please allow video access.
