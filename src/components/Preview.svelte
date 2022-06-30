@@ -106,6 +106,7 @@
             if (res.status) {
                 console.log("Video started. Now tracking");
                 isVideoRunning = true;
+                camBlocked = false;
                 runDetection();
             } else {
                 camBlocked = true;
