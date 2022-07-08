@@ -77,7 +77,7 @@
 </main>
 <footer>
 	<p>
-		© 2022 Robin Modisch | <a href="https://legal.modisch.me/privacy"
+		© Robin Modisch | <a href="https://legal.modisch.me/en/privacy"
 			>Privacy Policy</a
 		>
 	</p>
