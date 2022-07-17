@@ -35,6 +35,8 @@ Look at http://localhost:8080/ to see your build.
 Live updates are possible: Edit `./src/*` and save your changes, everything should be updated automatically. 
 Theme changes need to be build manually with `npm run theme`.
 
+Run `npm update` from time to time to keep ahead of the curve for all the dependabot alerts. 
+
 ## Deployment
 Prebuilds are kept out of this repo by design, can't assume they are always in sync.
 
