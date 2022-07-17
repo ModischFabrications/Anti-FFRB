@@ -11,9 +11,7 @@
 	let alertSettings: Writable<Alerts>;
 
 	// only mp3/wav are universally supported
-	const alertSound = new Audio(
-		"https://upload.wikimedia.org/wikipedia/commons/transcoded/3/34/Buzzer.ogg/Buzzer.ogg.mp3"
-	);
+	const alertSound = new Audio("audio//Buzzer.ogg.mp3");
 
 	let flashTimer;
 
