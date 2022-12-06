@@ -5,7 +5,7 @@
 
 This tool aims to help individuals manage and reduce these repetitive behaviors by alerting the user whenever their hands are close to their face. 
 
-![Showcase](https://github.com/ModischFabrications/Anti-FFRB/raw/master/docs/screenshot_light.png)
+![Showcase](https://github.com/ModischFabrications/Anti-FFRB/raw/main/docs/screenshot_light.png)
 
 ## Usage
 Use [my version](https://ffrb.modisch.me/) or host your own.
