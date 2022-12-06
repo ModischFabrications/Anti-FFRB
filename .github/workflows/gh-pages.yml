@@ -1,10 +1,11 @@
 # Simple workflow to host a github page based on this git project
-# luckily Svelte keeps all conventions, so this is basically the example. Thanks Svelte!
-# add CNAME file manually, it should be ignored by this build script
+# Luckily Svelte keeps all conventions, so this is basically the example. Thanks Svelte!
+# Add CNAME file to your deployment manually, it should be ignored by this build script
 
 # https://github.com/marketplace/actions/deploy-to-github-pages
 
 name: Build and Deploy
+
 on:
   workflow_dispatch:
   push:
@@ -13,10 +14,12 @@ on:
 
 permissions: 
   contents: write
-  
+  deployments: write   ## Github Pages
+
+concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+
 jobs:
   build-and-deploy:
-    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     timeout-minutes: 5
     

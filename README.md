@@ -1,11 +1,16 @@
 [![Build and Deploy](https://github.com/ModischFabrications/Anti-FFRB/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/ModischFabrications/Anti-FFRB/actions/workflows/gh-pages.yml)
 
 # Anti-FFRB
+[Body-focused repetitive behaviors (BFRBs)](https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior) can be a problem for many people. These behaviors can range from simple actions like face touching or lip tapping to more complex and damaging behaviors like nail biting or hair pulling. 
 
-Stop face focused repetitive behaviors (FFRB) by keeping your fingers away. 
+This tool aims to help individuals manage and reduce these repetitive behaviors by alerting the user whenever their hands are close to their face. 
 
-Use [my hosted version](https://ffrb.modisch.me/) or host your own.
+![Showcase](https://github.com/ModischFabrications/Anti-FFRB/raw/master/docs/screenshot_light.png)
 
+## Usage
+Use [my version](https://ffrb.modisch.me/) or host your own.
+
+## Explanation
 Synopsis: This script will warn you if your hand is in proximity to your face. 
 
 Basic algorithm:
@@ -15,11 +20,6 @@ Basic algorithm:
 3. Find and save hand position h_pos
 4. Alert if f_pos ~= h_pos
 ```
-
-## Motivation
-[Body-focused repetitive behaviors (BFRBs)](https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior) are better known under their common symptoms like nail biting, hair pulling, nose picking and more. 
-
-This script should make it easier to combat these bad habits by supervising you through your webcam and alerting you whenever they happen. 
 
 ## Installation
 This is for development, use the website if you are a user!
@@ -32,7 +32,7 @@ npm run dev
 ```
 Look at http://localhost:8080/ to see your build. 
 
-Live updates are possible: Edit `./src/*` and save your changes, everything should be updated automatically. 
+Live updates are possible: Editing anything in `src/` and saving these changes should result in an automatic recompilation and refresh of the website. 
 Theme changes need to be build manually with `npm run theme`.
 
 Run `npm update` from time to time to keep ahead of the curve for all the dependabot alerts. 
