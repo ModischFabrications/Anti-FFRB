@@ -14,10 +14,24 @@
 	const alertSound = new Audio("audio//Buzzer.mp3");
 
 	let flashTimer;
+	let lastNotificationTime = 0;
+	const NOTIFICATION_COOLDOWN = 30000; // 30 seconds
 
 	function sendAlert() {
-		if ($alertSettings.popup) {
-			alert("Stop that!");
+		if ($alertSettings.notification) {
+			const now = Date.now();
+			if (
+				now - lastNotificationTime > NOTIFICATION_COOLDOWN &&
+				Notification.permission === "granted"
+			) {
+				new Notification(app_name, {
+					body: "Stop touching your face!",
+					icon: "/favicon.png",
+				});
+				lastNotificationTime = now;
+			} else if (Notification.permission !== "denied" && Notification.permission !== "granted") {
+				Notification.requestPermission();
+			}
 		}
 
 		if ($alertSettings.sound && alertSound.paused) {
@@ -52,12 +66,12 @@
 <NavBar {app_name} {app_version} />
 <main>
 	<h3>
-		This is a utility to combat <a
+		This tool helps you manage <a
 			href="https://www.webmd.com/mental-health/ss/slideshow-understanding-body-focused-repetitive-behavior"
 			>Face-focused repetitive behaviors (FFRBs)</a
-		>.
+		> by alerting you whenever you touch your face.
 	</h3>
-	<p>Select your preferred alert and try touching your face!</p>
+	<p>Select your alert methods below and start the detection.</p>
 
 	<LayoutGrid>
 		<Cell span={8}>
@@ -69,8 +83,7 @@
 	</LayoutGrid>
 
 	<p class="hint-text">
-		Hint: Try facing the camera and turning on your lights if detection is
-		unreliable.
+		Troubleshooting: Ensure adequate lighting and face the camera directly for the most accurate detection.
 	</p>
 </main>
 <footer>

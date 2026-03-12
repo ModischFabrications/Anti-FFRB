@@ -1,10 +1,11 @@
 import App from "./App.svelte";
+import pkg from "../package.json";
 
 const app = new App({
 	target: document.body,
 	props: {
 		app_name: 'Anti-FFRB',
-		app_version: 'v0.8.1',
+		app_version: `v${pkg.version}`,
 	}
 });
 

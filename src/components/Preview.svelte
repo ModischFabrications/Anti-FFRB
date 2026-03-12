@@ -121,10 +121,21 @@
         context.clearRect(0, 0, canvas.width, canvas.height);
         isVideoRunning = false;
     }
+    function handleKeydown(event: KeyboardEvent) {
+        if (event.key === "Enter" || event.key === " ") {
+            toggleVideo();
+        }
+    }
 </script>
 
 <div>
-    <div class="preview-container" on:click={toggleVideo}>
+    <div
+        class="preview-container"
+        on:click={toggleVideo}
+        on:keydown={handleKeydown}
+        role="button"
+        tabindex="0"
+    >
         <div class="overlay-container">
             {#if !model}
                 <Fa icon={faSpinner} size="4x" class="spinner inlay-text" />

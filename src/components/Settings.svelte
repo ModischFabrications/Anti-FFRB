@@ -1,13 +1,13 @@
 <script context="module" lang="ts">
     export interface Alerts {
         sound: boolean;
-        popup: boolean;
+        notification: boolean;
         flashing: boolean;
     }
 
     const defaultAlerts: Alerts = {
         sound: false,
-        popup: false,
+        notification: true,
         flashing: true,
     };
 </script>
@@ -25,28 +25,36 @@
             : defaultAlerts
     );
     alertsStore.subscribe((val) => (localStorage.alerts = JSON.stringify(val)));
+
+    $: if (
+        $alertsStore.notification &&
+        typeof Notification !== "undefined" &&
+        Notification.permission !== "granted"
+    ) {
+        Notification.requestPermission();
+    }
 </script>
 
 <div class="settings-container">
-    <p>How do you want to be alerted?</p>
+    <p>Alert Methods</p>
     <div>
         <FormField>
             <Switch bind:checked={$alertsStore.sound} /><span slot="label"
-                >Sound</span
+                >Audio Signal (Buzzer)</span
             >
         </FormField>
     </div>
     <div>
         <FormField>
-            <Switch bind:checked={$alertsStore.popup} /><span slot="label"
-                >Popup</span
+            <Switch bind:checked={$alertsStore.notification} /><span
+                slot="label">System Notification (Global)</span
             >
         </FormField>
     </div>
     <div>
         <FormField>
             <Switch bind:checked={$alertsStore.flashing} /><span slot="label"
-                >Flashing</span
+                >Visual Signal (Screen Flash)</span
             >
         </FormField>
     </div>
@@ -54,7 +62,7 @@
     <div class="p-container">
         {#if !Object.values($alertsStore).some((a) => a)}
             <p class="warn-text" transition:fade>
-                Are you sure you don't want anything?
+                Please select at least one alert method to stay notified.
             </p>
         {/if}
     </div>

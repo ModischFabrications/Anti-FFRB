@@ -7,6 +7,9 @@ This tool aims to help individuals manage and reduce these repetitive behaviors 
 
 ![Showcase](https://github.com/ModischFabrications/Anti-FFRB/raw/main/docs/screenshot_light.png)
 
+## Status: Maintenance Mode (2026)
+This project has been stabilized for long-term functionality. No new features are planned.
+
 ## Usage
 Use [my version](https://ffrb.modisch.me/) or host your own.
 
@@ -71,27 +74,12 @@ Copy `./public/` to your webhost of choice.
 - [Handtrack.js](https://victordibia.com/handtrack.js)
 - [Fontawesome](https://fontawesome.com/) + [svelte-fa](https://github.com/Cweili/svelte-fa)
 
+## Q & A
+Q: Why build this?
+A: Ignoring bad habits is a bad habit of mine, let's see if a self-made solution helps.
 
-I'm also using https://counter.dev/ to track page visits without compromising any privacy with Google Analytics. 
-
-## References
-1. https://towardsdatascience.com/from-training-to-deployment-stop-biting-your-nails-with-machine-learning-ffed31a59040
-2. https://realpython.com/face-detection-in-python-using-a-webcam/
-3. https://github.com/shantnu/PyEng/blob/master/Image_Video/face_detect.py
-4. https://stackoverflow.com/questions/62933930/how-do-i-access-my-local-webcam-while-my-python-script-is-running-on-a-server
-5. https://github.com/ModischFabrications/AntiBite
-6. https://blog.tensorflow.org/2019/11/handtrackjs-tracking-hand-interactions.html
-7. https://github.com/krausest/js-framework-benchmark
-8. https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site/
-9. https://github.com/fireship-io/10-javascript-frameworks/tree/main/svelte-app
-10. https://medium.com/codingthesmartway-com-blog/building-a-svelte-3-todo-app-from-start-to-deployment-1737f72c23a6
-11. https://svelte.dev/tutorial/basics
-12. https://github.com/sveltejs/template
-13. https://svelte.dev/blog/svelte-for-new-developers
-14. https://deanattali.com/blog/multiple-github-pages-domains/
-15. https://dev.to/danawoodman/svelte-quick-tip-connect-a-store-to-local-storage-4idi
-16. https://fonts.google.com/icons
-17. https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces
+Q: Privacy?
+A: Nothing leaves your computer, everything is offline.
 
 ## Design Decisions
 ### Language
@@ -189,15 +177,28 @@ Cloudflare pages is a close contender because of great edge availability and pow
 ### Alerts
 1. Screen flickering makes sense if you are sitting in front of it, but they aren't great for people with epileptic seizures.
 2. Sound warnings are jarring, but easier. Definitely most annoying. 
-3. Popups are annoying to use, but also boring and easy to ignore. 
-
-## Q & A
-Q: Why build this?  
-A: Ignoring bad habits is a bad habit of mine, let's see if a self-made solution helps.
-
-Q: Privacy?  
-A: Nothing leaves your computer, everything is offline. Who would pay server costs to capture hours of your face?
+3. **System Notifications:** Modern, OS-level alerts that work in the background. (Replaced legacy popups in v0.9).
 
 ## Contributing
 Feel free to contact me or make a pull-request if you want to participate.
 Feedback is very welcome!
+
+## References
+1. https://towardsdatascience.com/from-training-to-deployment-stop-biting-your-nails-with-machine-learning-ffed31a59040
+2. https://realpython.com/face-detection-in-python-using-a-webcam/
+3. https://github.com/shantnu/PyEng/blob/master/Image_Video/face_detect.py
+4. https://stackoverflow.com/questions/62933930/how-do-i-access-my-local-webcam-while-my-python-script-is-running-on-a-server
+5. https://github.com/ModischFabrications/AntiBite
+6. https://blog.tensorflow.org/2019/11/handtrackjs-tracking-hand-interactions.html
+7. https://github.com/krausest/js-framework-benchmark
+8. https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site/
+9. https://github.com/fireship-io/10-javascript-frameworks/tree/main/svelte-app
+10. https://medium.com/codingthesmartway-com-blog/building-a-svelte-3-todo-app-from-start-to-deployment-1737f72c23a6
+11. https://svelte.dev/tutorial/basics
+12. https://github.com/sveltejs/template
+13. https://svelte.dev/blog/svelte-for-new-developers
+14. https://deanattali.com/blog/multiple-github-pages-domains/
+15. https://dev.to/danawoodman/svelte-quick-tip-connect-a-store-to-local-storage-4idi
+16. https://fonts.google.com/icons
+17. https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces
+
