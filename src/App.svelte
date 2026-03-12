@@ -2,13 +2,11 @@
 	export let app_name: string;
 	export let app_version: string;
 	import LayoutGrid, { Cell } from "@smui/layout-grid";
-	import type { Writable } from "svelte/store";
 
-	import Settings, { Alerts } from "./components/Settings.svelte";
 	import Preview from "./components/Preview.svelte";
 	import NavBar from "./components/NavBar.svelte";
-
-	let alertSettings: Writable<Alerts>;
+	import Settings from "./components/Settings.svelte";
+	import { alertsStore } from "./stores";
 
 	// only mp3/wav are universally supported
 	const alertSound = new Audio("audio//Buzzer.mp3");
@@ -18,7 +16,7 @@
 	const NOTIFICATION_COOLDOWN = 30000; // 30 seconds
 
 	function sendAlert() {
-		if ($alertSettings.notification) {
+		if ($alertsStore.notification) {
 			const now = Date.now();
 			if (
 				now - lastNotificationTime > NOTIFICATION_COOLDOWN &&
@@ -34,12 +32,12 @@
 			}
 		}
 
-		if ($alertSettings.sound && alertSound.paused) {
+		if ($alertsStore.sound && alertSound.paused) {
 			// this needs a prior user interaction!
 			alertSound.play();
 		}
 
-		if ($alertSettings.flashing) {
+		if ($alertsStore.flashing) {
 			window.document.body.classList.add("flash");
 			clearTimeout(flashTimer);
 			flashTimer = setTimeout(() => {
@@ -78,7 +76,7 @@
 			<Preview on:detection={sendAlert} />
 		</Cell>
 		<Cell span={4}>
-			<Settings bind:alertsStore={alertSettings} />
+			<Settings />
 		</Cell>
 	</LayoutGrid>
 
