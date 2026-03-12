@@ -75,7 +75,7 @@
 </main>
 <footer>
 	<p>
-		© Robin Modisch | <a href="https://legal.modisch.me/en/privacy"
+		© Modisch Fabrications | <a href="https://fabrications.modisch.me/privacy"
 			>Privacy Policy</a
 		>
 	</p>
